@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Views
 {
-	public class BusConnectionView : MonoBehaviour
+	public class SingleBusConnectionView : MonoBehaviour
 	{
 		[SerializeField] TMP_Text _text;
 		[SerializeField] private bool _inDirIsRight = true;
@@ -26,7 +26,7 @@ namespace Views
 				return;
 			}
 			
-			_renderer.material = _busConnection.Enabled ? SettingsManager.CurrentSettings._pinOnMat : SettingsManager.CurrentSettings._pinOffMat;
+			_renderer.material = _busConnection.Enabled ? SettingsManager.CurrentSettings.PinOnMat : SettingsManager.CurrentSettings.PinOffMat;
 			//tick
 			if (_busConnection.Enabled)
 			{

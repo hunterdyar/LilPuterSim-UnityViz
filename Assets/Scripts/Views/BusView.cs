@@ -9,12 +9,8 @@ public class BusView : ViewBase<Bus,Bus>
 {
 	public TMP_Text _text;
 	private StringBuilder _sb = new StringBuilder();
-	private BusConnectionView[] _connectionViews;
-
-	private void Awake()
-	{
-		_connectionViews = GetComponentsInChildren<BusConnectionView>();
-	}
+	private SingleBusConnectionView[] _singleConnectionViews = Array.Empty<SingleBusConnectionView>();
+	private SystemInOutBusConnectionView[] _sysConnectioonViews = Array.Empty<SystemInOutBusConnectionView>();
 
 	public override void SetComponent(Bus component)
 	{
@@ -24,12 +20,24 @@ public class BusView : ViewBase<Bus,Bus>
 
 	private void InitConnections()
 	{
-		foreach (var connectionView in _connectionViews)
+		_singleConnectionViews = GetComponentsInChildren<SingleBusConnectionView>();
+		_sysConnectioonViews = GetComponentsInChildren<SystemInOutBusConnectionView>();
+		foreach (var connectionView in _singleConnectionViews)
 		{
 			var c = _component.Connections.Find(x => x.Name == connectionView.ConnectionName);
 			if (c != null)
 			{
 				connectionView.SetConnection(c);
+			}
+		}
+
+		foreach (var sioView in _sysConnectioonViews)
+		{
+			var inc = _component.Connections.Find(x => x.Name == sioView.InID);
+			var outc = _component.Connections.Find(x => x.Name == sioView.OutID);
+			if (inc != null && outc != null)
+			{
+				sioView.SetConnection(inc, outc);
 			}
 		}
 	}
@@ -39,7 +47,12 @@ public class BusView : ViewBase<Bus,Bus>
 		string active = GetActiveConnectionsLabel();
 		_text.text = "Bus\n\n" + active + bus.Value.ToString();
 		
-		foreach (var connectionView in _connectionViews)
+		foreach (var connectionView in _singleConnectionViews)
+		{
+			connectionView.Refresh();
+		}
+
+		foreach (var connectionView in _sysConnectioonViews)
 		{
 			connectionView.Refresh();
 		}
