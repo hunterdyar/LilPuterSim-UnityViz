@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd6dd963c214824a24594b3acdcdf2c, type: 3}
+  m_Name: VizSettings
+  m_EditorClassIdentifier: 
+  _pinOnMat: {fileID: 2100000, guid: e1f66751346338544a5762f1db5fc4e1, type: 2}
+  _pinOffMat: {fileID: 2100000, guid: 911f03a0ddb487f47b287a8f013aa82a, type: 2}

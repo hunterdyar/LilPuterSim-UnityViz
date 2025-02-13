@@ -11,6 +11,7 @@ public class ComputerManager : MonoBehaviour
     [SerializeField] private BusView _busView;
     [SerializeField] private RegisterView _aRegisterView;
     [SerializeField] private RegisterView _bRegisterView;
+    [SerializeField] private ClockTickView _clockTickView;
     private void Awake()
     {
         _compy = new ComputerBase();
@@ -18,6 +19,7 @@ public class ComputerManager : MonoBehaviour
         _busView.SetComponent(_compy.CPU.Bus);
         _aRegisterView.SetComponent(_compy.CPU.A);
         _bRegisterView.SetComponent(_compy.CPU.B);
+        _clockTickView.SetComponent(_compy.Clock.ClockIsHighPin);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
