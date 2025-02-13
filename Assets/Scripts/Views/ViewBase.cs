@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ViewBase<T,V> : MonoBehaviour where T : IObservable<V>
 {
-	private IObservable<V> _component;
+	protected T _component;
 
 	public virtual void SetComponent(T component)
 	{
