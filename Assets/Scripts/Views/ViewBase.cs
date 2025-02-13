@@ -18,6 +18,9 @@ public abstract class ViewBase<T,V> : MonoBehaviour where T : IObservable<V>
 	// Update is called once per frame
 	protected virtual void OnDestroy()
 	{
-		_component.Unubscribe(OnComponentUpdate);
+		if (_component != null)
+		{
+			_component.Unubscribe(OnComponentUpdate);
+		}
 	}
 }
