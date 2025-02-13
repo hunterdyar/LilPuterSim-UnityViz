@@ -2,14 +2,28 @@ using System;
 using System.Text;
 using LilPuter;
 using UnityEngine;
+using Views;
 
 public class ComputerManager : MonoBehaviour
 {
     private ComputerBase _compy;
+
+    [SerializeField] private BusView _busView;
+    [SerializeField] private RegisterView _aRegisterView;
+    [SerializeField] private RegisterView _bRegisterView;
+    private void Awake()
+    {
+        _compy = new ComputerBase();
+        //Initialize the view.
+        _busView.SetComponent(_compy.CPU.Bus);
+        _aRegisterView.SetComponent(_compy.CPU.A);
+        _bRegisterView.SetComponent(_compy.CPU.B);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _compy = new ComputerBase();
+        //
         var sb = new StringBuilder();
         sb.AppendLine("LDAI 22");
         sb.AppendLine("LDBI 20");
@@ -25,6 +39,15 @@ public class ComputerManager : MonoBehaviour
 
     private void Update()
     {
-        _compy.Clock.Cycle();
+        //_compy.Clock.Cycle();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _compy.Clock.Tick();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            _compy.Clock.Tock();
+        }
     }
 }
