@@ -1,43 +1,40 @@
 ﻿using LilPuter;
 using UnityEngine;
 
-namespace Views
+public class SystemInOutBusConnectionView : MonoBehaviour
 {
-	public class SystemInOutBusConnectionView : MonoBehaviour
+	[SerializeField] private ArrowVisual _arrow;
+	public string InID => _inID;
+	[SerializeField] private string _inID;
+	public string OutID => _outID;
+	[SerializeField] private string _outID;
+	[SerializeField] private string displayName;
+
+	private BusConnection _inConnection;
+	private BusConnection _outConnection;
+	public void SetConnection(BusConnection inConn,BusConnection outConn)
 	{
-		[SerializeField] private ArrowVisual _arrow;
-		public string InID => _inID;
-		[SerializeField] private string _inID;
-		public string OutID => _outID;
-		[SerializeField] private string _outID;
-		[SerializeField] private string displayName;
+		_inConnection = inConn;
+		_outConnection = outConn;
+	}
 
-		private BusConnection _inConnection;
-		private BusConnection _outConnection;
-		public void SetConnection(BusConnection inConn,BusConnection outConn)
+	public void Refresh()
+	{
+		if (_inConnection == null || _outConnection == null)
 		{
-			_inConnection = inConn;
-			_outConnection = outConn;
+			return;
 		}
-
-		public void Refresh()
+		if(_inConnection.Enabled && !_outConnection.Enabled)
 		{
-			if (_inConnection == null || _outConnection == null)
-			{
-				return;
-			}
-			if(_inConnection.Enabled && !_outConnection.Enabled)
-			{
-				_arrow.SetState(true,true);
-			}else if (_outConnection.Enabled && !_inConnection.Enabled)
-			{
-				_arrow.SetState(true, false);
-			}
-			else
-			{
-				_arrow.SetState(false,false);
-			}
-			
+			_arrow.SetState(true,true);
+		}else if (_outConnection.Enabled && !_inConnection.Enabled)
+		{
+			_arrow.SetState(true, false);
 		}
+		else
+		{
+			_arrow.SetState(false,false);
+		}
+		
 	}
 }
