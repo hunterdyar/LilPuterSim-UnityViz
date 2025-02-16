@@ -3,7 +3,6 @@ using System.Text;
 using LilPuter;
 using TMPro;
 using UnityEngine;
-using Views;
 
 public class BusView : ViewBase<Bus,Bus>
 {
@@ -28,6 +27,7 @@ public class BusView : ViewBase<Bus,Bus>
 			if (c != null)
 			{
 				connectionView.SetConnection(c);
+				connectionView.Refresh();
 			}
 		}
 
