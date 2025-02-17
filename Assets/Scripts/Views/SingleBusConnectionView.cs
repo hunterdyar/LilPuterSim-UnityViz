@@ -25,7 +25,7 @@ public class SingleBusConnectionView : MonoBehaviour
 			return;
 		}
 		
-		_renderer.material = _busConnection.Enabled ? SettingsManager.CurrentSettings.PinOnMat : SettingsManager.CurrentSettings.PinOffMat;
+		_renderer.material = _busConnection.Enabled ? VizSettings.CurrentSettings.PinOnMat : VizSettings.CurrentSettings.PinOffMat;
 		//tick
 		if (_busConnection.Enabled)
 		{

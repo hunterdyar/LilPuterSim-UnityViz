@@ -7,8 +7,8 @@ public class ArrowVisual : MonoBehaviour
 {
     [SerializeField] private MeshRenderer _arrowRenderer;
     [SerializeField] private MeshRenderer _boxRenderer;
-    private Material OnMat => SettingsManager.CurrentSettings.PinOnMat;
-    private Material OffMat => SettingsManager.CurrentSettings.PinOffMat;
+    private Material OnMat => VizSettings.CurrentSettings.PinOnMat;
+    private Material OffMat => VizSettings.CurrentSettings.PinOffMat;
 
     private void Awake()
     {

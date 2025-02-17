@@ -14,10 +14,10 @@ public class PinView : ViewBase<Pin, int>
 
     protected override void OnComponentUpdate(int newValue)
     {
-        if(_meshRenderer != null && SettingsManager.CurrentSettings != null){
+        if(_meshRenderer != null && VizSettings.CurrentSettings != null){
             _meshRenderer.material = newValue == 0
-                ? SettingsManager.CurrentSettings.PinOffMat
-                : SettingsManager.CurrentSettings.PinOnMat;
+                ? VizSettings.CurrentSettings.PinOffMat
+                : VizSettings.CurrentSettings.PinOnMat;
         }
     }
     
