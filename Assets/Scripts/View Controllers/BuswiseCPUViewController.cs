@@ -9,7 +9,6 @@ public class BuswiseCPUViewController : MonoBehaviour
     [Header("References")]
     [SerializeField]private Computer _comp;
     [Header("Configuration")]
-    [SerializeField] private BusView _busView;
     [SerializeField] private RegisterView _aRegisterView;
     [SerializeField] private RegisterView _bRegisterView;
     [SerializeField] private ClockTickView _clockTickView;
@@ -19,7 +18,6 @@ public class BuswiseCPUViewController : MonoBehaviour
     {
         var compy = _comp.GetComputer();
         //Initialize the view.
-        _busView.SetComponent(compy.CPU.Bus);
         _aRegisterView.SetComponent(compy.CPU.A);
         _bRegisterView.SetComponent(compy.CPU.B);
         _clockTickView.SetComponent(compy.Clock.ClockIsHighPin);

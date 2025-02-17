@@ -6,10 +6,16 @@ using UnityEngine;
 
 public class BusView : ViewBase<Bus,Bus>
 {
+	[SerializeField] private Computer _computer;
 	public TMP_Text _text;
 	private StringBuilder _sb = new StringBuilder();
 	private SingleBusConnectionView[] _singleConnectionViews = Array.Empty<SingleBusConnectionView>();
 	private SystemInOutBusConnectionView[] _sysConnectioonViews = Array.Empty<SystemInOutBusConnectionView>();
+
+	private void Start()
+	{
+		SetComponent(_computer.GetComputer().CPU.Bus);
+	}
 
 	public override void SetComponent(Bus component)
 	{

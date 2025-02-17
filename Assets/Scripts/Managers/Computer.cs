@@ -26,12 +26,14 @@ public class Computer : ScriptableObject
             Debug.Log("Compy: "+value);
         };
     }
-
+    
+    [ContextMenu("Tick")]
     public void Tick()
     {
         GetComputer().Clock.Tick();
     }
 
+    [ContextMenu("Tock")]
     public void Tock()
     {
         GetComputer().Clock.Tock();
