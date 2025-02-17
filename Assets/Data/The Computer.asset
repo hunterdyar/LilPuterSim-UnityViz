@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ab94e746634601a58f77b0647e9375, type: 3}
   m_Name: The Computer
   m_EditorClassIdentifier: 
-  TestProgram: 'LDAI 22
-
-    LDAI 10
+  TestProgram: 'LDAI 10
 
     LDBI 20
 
