@@ -8,9 +8,7 @@ public class Autorunner : MonoBehaviour
     private float autorunHz;
     private bool autorunEnabled;
     private float timeSinceLastTick;
-
-    private bool tick = true;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +41,7 @@ public class Autorunner : MonoBehaviour
         }
     }
 
+    //Trick or Tock!
     private void TickOrTick()
     {
         _computer.TickOrTock();

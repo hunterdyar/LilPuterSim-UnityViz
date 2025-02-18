@@ -14,15 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TestProgram: 'LDAI 3
 
-    STA 0
+    STA 1
 
-    LDA 0
-
-    LDBI 0
+    LDB 1
 
     ADD
 
-    STA 0
+    STA 1
 
     OUT
 
