@@ -30,18 +30,4 @@ public class BuswiseCPUViewController : MonoBehaviour
     {
         _comp.LoadTestProgram();
     }
-
-    //Todo: Computer input should not be in this view controller.
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _comp.Tick();
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            _comp.Tock();
-        }
-    }
 }

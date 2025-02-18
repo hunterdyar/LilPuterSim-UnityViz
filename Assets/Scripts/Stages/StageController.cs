@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -6,17 +7,31 @@ using UnityEngine.SceneManagement;
 
 public class StageController : MonoBehaviour
 {
+	public static StageController Instance;
+	public static Action<Stage> OnStageLoaded;
     public List<Stage> _stages;
 	[CanBeNull] private Stage _currentStage;
 	private Stack<Stage> _history = new Stack<Stage>();
-	
-    void Start()
+
+	private void Awake()
+	{
+		if (Instance != null)
+		{
+			throw new Exception("There should only be one StageController in the scene");
+		}
+		else
+		{
+			Instance = this;
+		}
+	}
+
+	void Start()
     {
         var defaultStage = _stages[0];
 		LoadStage(defaultStage);
     }
 
-    private void LoadStage(Stage newStage)
+    public void LoadStage(Stage newStage)
     {
 	    if(_currentStage != null)
 	    {
@@ -29,6 +44,7 @@ public class StageController : MonoBehaviour
 		    SceneManager.LoadScene(newStage.sceneName, LoadSceneMode.Additive);
 		    _currentStage = newStage;
 		    _history.Push(newStage);
+		    OnStageLoaded?.Invoke(newStage);
 	    }
     }
 
@@ -37,6 +53,7 @@ public class StageController : MonoBehaviour
 	    yield return SceneManager.UnloadSceneAsync(_currentStage!.sceneName);
 	    yield return SceneManager.LoadSceneAsync(nextStage.sceneName, LoadSceneMode.Additive);
 	    _currentStage = nextStage;
+	    OnStageLoaded?.Invoke(nextStage);
 	}
 
 	public bool GoBackInHistory()
@@ -49,5 +66,10 @@ public class StageController : MonoBehaviour
 			return true;
 		}
 		return false;
+	}
+
+	public bool CanGoBackInHistory()
+	{
+		return _history.Count > 1;
 	}
 }

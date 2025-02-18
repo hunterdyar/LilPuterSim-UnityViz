@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234ee6c334b848218cd0e60eebad3d99, type: 3}
   m_Name: Arithmetic Logic Unit
   m_EditorClassIdentifier: 
+  _displayName: Arithmetic Logic Unit
   sceneName: ALUTestScene

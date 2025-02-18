@@ -1,0 +1,60 @@
+{
+    "name": "LilPuterInputActions",
+    "maps": [
+        {
+            "name": "Operating",
+            "id": "65c6349a-3b32-4ea1-b935-8d188c8d6644",
+            "actions": [
+                {
+                    "name": "CycleClock",
+                    "type": "Button",
+                    "id": "7579c90e-886e-45db-9f30-59cdb06c490d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "aa48bb46-877d-472d-a441-b569a64b1d61",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fba307a0-4283-487d-8391-713a0917f8fd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Normal",
+                    "action": "CycleClock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e591201-a41e-4f2c-826c-a9d06dcb0dad",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Normal",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Normal",
+            "bindingGroup": "Normal",
+            "devices": []
+        }
+    ]
+}

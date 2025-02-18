@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 namespace Configuration
 {
-	[CreateAssetMenu(fileName = "VizSettings", menuName = "VizSettings", order = 0)]
+	[CreateAssetMenu(fileName = "VizSettings", menuName = "LilPuter/VizSettings", order = 0)]
 	public class VizSettings : ScriptableObject
 	{
 		public static VizSettings CurrentSettings => GetCurrentSettings();
