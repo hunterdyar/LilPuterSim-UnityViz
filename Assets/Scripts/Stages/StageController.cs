@@ -9,6 +9,8 @@ public class StageController : MonoBehaviour
 {
 	public static StageController Instance;
 	public static Action<Stage> OnStageLoaded;
+	public static Action OnLoadingStart;
+	public static Action OnLoadingComplete;
     public List<Stage> _stages;
 	[CanBeNull] private Stage _currentStage;
 	private Stack<Stage> _history = new Stack<Stage>();
@@ -50,9 +52,11 @@ public class StageController : MonoBehaviour
 
 	private IEnumerator SwitchToScene(Stage nextStage)
 	{
+		OnLoadingStart?.Invoke();
 	    yield return SceneManager.UnloadSceneAsync(_currentStage!.sceneName);
 	    yield return SceneManager.LoadSceneAsync(nextStage.sceneName, LoadSceneMode.Additive);
 	    _currentStage = nextStage;
+	    OnLoadingComplete?.Invoke();
 	    OnStageLoaded?.Invoke(nextStage);
 	}
 

@@ -8,6 +8,8 @@ public class Computer : ScriptableObject
     private ComputerBase _compy;
     [TextArea(10,30)]
     public string TestProgram;
+
+    private bool _lastTickWasTick;
     public ComputerBase GetComputer()
     {
         //Lazy init because ScriptableObject Loading.
@@ -15,6 +17,8 @@ public class Computer : ScriptableObject
         {
             _compy = new ComputerBase();
         }
+
+        _lastTickWasTick = false;
         return _compy;
     }
 
@@ -43,5 +47,22 @@ public class Computer : ScriptableObject
     public void ExecuteOnce()
     {
         GetComputer().ExecuteOneInstruction();
+    }
+
+    /// <summary>
+    /// Calls Tick() or Tick() alternatingly.
+    /// </summary>
+    public void TickOrTock()
+    {
+        if (_lastTickWasTick)
+        {
+            Tock();
+            _lastTickWasTick = false;
+        }
+        else
+        {
+            Tick();
+            _lastTickWasTick = true;
+        }
     }
 }
