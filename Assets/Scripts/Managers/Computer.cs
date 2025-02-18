@@ -38,4 +38,10 @@ public class Computer : ScriptableObject
     {
         GetComputer().Clock.Tock();
     }
+
+    [ContextMenu("Execute One Instruction")]
+    public void ExecuteOnce()
+    {
+        GetComputer().ExecuteOneInstruction();
+    }
 }
