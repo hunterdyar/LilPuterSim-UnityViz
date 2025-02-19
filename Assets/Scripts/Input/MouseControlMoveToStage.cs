@@ -22,7 +22,7 @@ namespace DefaultNamespace
 				var wray = Camera.main.ScreenPointToRay(pos);
 				if (Physics.Raycast(wray, out var hit))
 				{
-					var mtst = hit.collider.GetComponentInParent<MoveToStageTarget>();
+					var mtst = hit.collider.GetComponentInParent<ISelectableViaCollider>();
 					if (mtst != null)
 					{
 						mtst.Select();

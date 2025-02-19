@@ -1,4 +1,5 @@
-﻿using LilPuter;
+﻿using DefaultNamespace;
+using LilPuter;
 using TMPro;
 using UnityEngine;
 
@@ -6,12 +7,13 @@ namespace Views
 {
 	public class ALUSimpleView : ViewBase<ALUMultiBit, ALUMultiBit>
 	{
+		[Header("Config")]
 		[SerializeField] private Computer _computer;
 		[SerializeField] private TMP_Text _AInput;
 		[SerializeField] private TMP_Text _BInput;
 		[SerializeField] private TMP_Text _OpLabel;
 		[SerializeField] private TMP_Text _ResultLabel;
-
+		
 		public void Start()
 		{
 			//there is only one ALU, so we can set ourselves.
@@ -24,5 +26,6 @@ namespace Views
 			_OpLabel.text = ALUOneBit.OpAsString(alu.Operation.Value);
 			_ResultLabel.text = alu.Result.Value.ToString();
 		}
+		
 	}
 }

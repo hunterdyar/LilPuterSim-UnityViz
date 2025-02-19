@@ -1,11 +1,10 @@
-﻿using LilPuter;
+﻿using System;
 using UnityEngine;
 
 
-public abstract class ViewBase<T,V> : MonoBehaviour where T : IObservable<V>
+public abstract class ViewBase<T,V> : MonoBehaviour where T : LilPuter.IObservable<V>
 {
 	protected T _component;
-
 	public virtual void SetComponent(T component)
 	{
 		_component = component;

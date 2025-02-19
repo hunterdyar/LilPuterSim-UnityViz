@@ -5,38 +5,37 @@ using UnityEngine;
 public class Autorunner : MonoBehaviour
 {
     [SerializeField] private Computer _computer;
-    private float autorunHz;
-    private bool autorunEnabled;
-    private float timeSinceLastTick;
+    private float _autorunHz;
+    private bool _autorunEnabled;
+    private float _timeSinceLastTick;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        timeSinceLastTick = 0.1f;
+        _timeSinceLastTick = 0.1f;
     }
 
     public void SetAutorunEnabled(bool isEnabled)
     {
-        autorunEnabled = isEnabled;
+        _autorunEnabled = isEnabled;
     }
 
     public void SetAutorunSpeed(float hz)
     {
-        autorunHz = hz;
+        _autorunHz = hz;
     }
 
 // Update is called once per frame
     void Update()
     {
-        if(!autorunEnabled)
+        if(!_autorunEnabled)
         {
             return;
         }
         
-        timeSinceLastTick -= Time.deltaTime;
-        if (timeSinceLastTick < 0)
+        _timeSinceLastTick -= Time.deltaTime;
+        if (_timeSinceLastTick < 0)
         {
-            timeSinceLastTick = 1f/autorunHz;
+            _timeSinceLastTick = 1f/_autorunHz;
             TickOrTick();
         }
     }

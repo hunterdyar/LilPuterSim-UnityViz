@@ -7,4 +7,6 @@ public class Stage : ScriptableObject
 	public string DisplayName => _displayName;
 	[SerializeField] private string _displayName;
 	public string sceneName;
+	
+	
 }

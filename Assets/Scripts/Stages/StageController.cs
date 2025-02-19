@@ -12,9 +12,13 @@ public class StageController : MonoBehaviour
 	public static Action OnLoadingStart;
 	public static Action OnLoadingComplete;
     public List<Stage> _stages;
-	[CanBeNull] private Stage _currentStage;
-	private Stack<Stage> _history = new Stack<Stage>();
 
+    public static object CurrentRoot => _currentRoot;
+	private static object _currentRoot;
+    public static Stage CurrentStage => _currentStage;
+	[CanBeNull] private static Stage _currentStage;
+	private Stack<Stage> _history = new Stack<Stage>();
+	
 	private void Awake()
 	{
 		if (Instance != null)
@@ -33,8 +37,10 @@ public class StageController : MonoBehaviour
 		LoadStage(defaultStage);
     }
 
-    public void LoadStage(Stage newStage)
+    public void LoadStage(Stage newStage, [CanBeNull] object root = null)
     {
+	    _currentRoot = root;
+	    
 	    if(_currentStage != null)
 	    {
 		    StartCoroutine(SwitchToScene(newStage));
@@ -43,11 +49,13 @@ public class StageController : MonoBehaviour
 	    }
 	    else
 	    {
-		    SceneManager.LoadScene(newStage.sceneName, LoadSceneMode.Additive);
 		    _currentStage = newStage;
+		    SceneManager.LoadScene(newStage.sceneName, LoadSceneMode.Additive);
+		    //loading start. Loading complete.
 		    _history.Push(newStage);
 		    OnStageLoaded?.Invoke(newStage);
 	    }
+	    
     }
 
 	private IEnumerator SwitchToScene(Stage nextStage)
