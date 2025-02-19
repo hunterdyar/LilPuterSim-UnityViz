@@ -11,6 +11,7 @@ namespace Views
 		[SerializeField] private PinView cInView;
 		[SerializeField] private PinView cOutView;
 		[SerializeField] private PinView resultView;
+		[SerializeField] private ExplodedPinView selectView;
 
 		private void Start()
 		{
@@ -28,6 +29,7 @@ namespace Views
 			cInView.SetComponent(component.CarryIn);
 			cOutView.SetComponent(component.CarryOut);
 			resultView.SetComponent(component.Result);
+			selectView.SetComponent(component.Op);
 		}
 
 		protected override void OnComponentUpdate(ALUOneBit newValue)
